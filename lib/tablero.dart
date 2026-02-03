@@ -27,8 +27,9 @@ void inicializarTablero(){
 bool puedeVoltear(int index){
   return !cartas[index].volteada &&
   !cartas[index].encontrada &&
-  cartasVolteadas.length<2;
+  cartasVolteadas.length < 2;
 }
+
 void voltearCarta(int index){
   if(!puedeVoltear(index)) return; 
   cartas[index].volteada = true;
