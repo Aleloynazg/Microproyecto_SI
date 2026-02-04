@@ -48,23 +48,41 @@ class _BoardMemoryState extends State<BoardMemory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Memoria 6x6")),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
+      appBar: AppBar(
+        title: const Text("Memoria 6x6"), 
+        centerTitle: true,
+        actions:[
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20),
+                child: Text(
               'Intentos: ${tablero.intentos}', 
-              style: const TextStyle(fontSize: 24)
+              style: const TextStyle(fontSize: 17)
             ),
           ),
-          Expanded(
-            child: GridView.builder(
-              padding: const EdgeInsets.all(10),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            ),
+            ],
+            ),
+  
+            body: Container(
+              
+            margin: const EdgeInsets.fromLTRB(30,1,30,10),
+              
+               child: Center(
+                
+                child: AspectRatio(aspectRatio: 1,
+                
+                child: GridView.builder(
+              
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.all(0),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                
+                
                 crossAxisCount: 6,
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
+                childAspectRatio: 1,
               ),
               itemCount: tablero.cartas.length,
               itemBuilder: (context, index) {
@@ -90,10 +108,12 @@ class _BoardMemoryState extends State<BoardMemory> {
                   },
                 );
               },
+                ),
             ),
-          ),
-        ],
-      ),
+               ),
+            ),
     );
   }
-}
+ 
+
+  }
