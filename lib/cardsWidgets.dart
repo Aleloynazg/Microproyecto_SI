@@ -19,10 +19,6 @@ class _CartaWidgetState extends State<CartaWidget>{
   Widget build(BuildContext context){
     return GestureDetector(
       onTap: (){
-        setState((){
-          widget.carta.volteada = true;
-
-        });
         widget.onTap();},
         child: Container(
         margin: const EdgeInsets.all(1), 
@@ -55,12 +51,12 @@ class _CartaWidgetState extends State<CartaWidget>{
   }
 Color estadoColor(){
   if(widget.carta.encontrada){
-    return Colors.blue;
-  }
-  else if (widget.carta.volteada){
+    return Colors.green; //Cambiarlo a verde cuando ya esten en pareja
+  } else if (widget.carta.volteada){
     return Colors.white;
 
   }else{
   return Colors.purple;
-}} 
+    }
+  }
 }
