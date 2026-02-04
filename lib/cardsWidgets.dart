@@ -38,15 +38,38 @@ class _CartaWidgetState extends State<CartaWidget>{
   }
   Widget contenidoCarta(){
     if(widget.carta.volteada|| widget.carta.encontrada){
-      return Text(
-        widget.carta.valor.toString(), 
-        style: const TextStyle(
-          fontSize: 20,
+      return Stack(
+        children: [
+          Positioned.fill(
+          
+          child: Center(
+            child: FittedBox(
+              fit: BoxFit.contain,
+             child: Icon(widget.carta.icono, color: Colors.black
+            ),
+          ),
+            ),),
+        Positioned(
+          top: 2, 
+          right: 4,
+          child: SizedBox(width: 10, height: 10,
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+          child: Text
+          (widget.carta.valor.toString(),
+           style: const TextStyle(
+          fontSize: 20),),
+        
         ),
+          ),
+        ),
+      
+          
+        ],
       );
     
     }
-    return const Text('');
+    return const SizedBox();
 
   }
 Color estadoColor(){

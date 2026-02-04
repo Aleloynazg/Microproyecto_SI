@@ -10,15 +10,25 @@ class Tablero{
 
   }
 
+final List<IconData> iconosDisponibles=[
+ Icons.star, Icons.favorite, Icons.icecream, Icons.pets, Icons.ice_skating, Icons.rocket,
+  Icons.emoji_emotions, Icons.alarm, Icons.lightbulb, Icons.local_pizza, Icons.music_note, 
+  Icons.fire_truck_outlined, Icons.cake, Icons.umbrella, Icons.diamond, Icons.sunny, Icons.money,
+  Icons.videocam, Icons.bug_report, Icons.forest, Icons.cabin, Icons.family_restroom, Icons.airplanemode_active,
+  Icons.restaurant, Icons.handshake, Icons.sports_basketball
 
+
+];
 
 void inicializarTablero(){
   cartas.clear(); 
   cartasVolteadas.clear(); 
   intentos = 0;
+  iconosDisponibles.shuffle();
   for(int i =1;i<=18;i++){
-    cartas.add(Cards(valor: i)); 
-    cartas.add(Cards(valor: i)); 
+    IconData escogido = iconosDisponibles[i];
+    cartas.add(Cards(valor: i,icono: escogido)); 
+    cartas.add(Cards(valor: i, icono: escogido)); 
   }
   cartas.shuffle();
 }

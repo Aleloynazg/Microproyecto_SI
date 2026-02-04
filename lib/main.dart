@@ -26,8 +26,8 @@ class BoardMemory extends StatefulWidget {
 }
 
 class _BoardMemoryState extends State<BoardMemory> {
-  // 1. El objeto tablero DEBE estar aquí adentro
-  final Tablero tablero = Tablero();
+  // Quite el final para poder reiniciarlo 
+  Tablero tablero = Tablero();
 
   // 2. La función para verificar parejas DEBE estar aquí adentro
   void _verificarPareja() {
@@ -52,6 +52,12 @@ class _BoardMemoryState extends State<BoardMemory> {
         title: const Text("Memoria 6x6"), 
         centerTitle: true,
         actions:[
+          IconButton(
+            icon: const Icon(Icons.refresh, size: 25), 
+            onPressed:() {setState(() {
+              {tablero=Tablero();}
+            });},),
+
           Center(
             child: Padding(
               padding: const EdgeInsets.only(right: 20),
