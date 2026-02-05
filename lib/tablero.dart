@@ -25,7 +25,7 @@ void inicializarTablero(){
   cartasVolteadas.clear(); 
   intentos = 0;
   iconosDisponibles.shuffle();
-  for(int i =1;i<=18;i++){
+  for(int i =0;i<18;i++){
     IconData escogido = iconosDisponibles[i];
     cartas.add(Cards(valor: i,icono: escogido)); 
     cartas.add(Cards(valor: i, icono: escogido)); 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:microproyecto_si/tablero.dart';
 import 'package:microproyecto_si/cardsWidgets.dart'; 
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,6 +30,26 @@ class _BoardMemoryState extends State<BoardMemory> {
   Tablero tablero = Tablero();
   int? mejorPuntaje;
 
+  @override
+  void initState(){
+    super.initState();
+    _cargarPuntaje();
+  }
+  Future <void> _cargarPuntaje() async {
+    final preference = await SharedPreferences.getInstance();
+    setState(() {
+      
+      mejorPuntaje = preference.getInt('record_intentos');
+    });
+
+
+  }
+  Future <void> _guardarPuntaje (int nuevoRecord)async{
+    final preference = await SharedPreferences.getInstance();
+    await preference.setInt('record_intentos', nuevoRecord);
+
+  }
+
   void _verificarPareja() {
     int i1 = tablero.cartasVolteadas[0];
     int i2 = tablero.cartasVolteadas[1];
@@ -51,6 +72,7 @@ class _BoardMemoryState extends State<BoardMemory> {
       setState(() {
         if (mejorPuntaje == null || tablero.intentos < mejorPuntaje!) {
           mejorPuntaje = tablero.intentos;
+          _guardarPuntaje(tablero.intentos);
         }
       });
       
